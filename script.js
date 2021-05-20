@@ -16,23 +16,29 @@ const timeArray = [hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16
 
 function setTimes(){
     const timeNow = moment().hour();
-
-    timeArray.forEach(timeBlock => ()=>{
-        const compareTime = parseInt((timeBlock.id)[0]+(timeBlock.id)[1]);
-        switch(true){
-            case (compareTime<timeNow):
-                timeBlock.addClass("past");
-                timeBlock.removeClass("present");
-                timeBlock.removeClass("future");
-            case (compareTime==timeNow):
-                timeBlock.addClass("present");
-                timeBlock.removeClass("past");
-                timeBlock.removeClass("future");
-            case (compareTime>timeNow):
-                timeBlock.addClass("future");
-                timeBlock.removeClass("past");
-                timeBlock.removeClass("present");
+    console.log("timeNow: "+timeNow);
+    timeArray.forEach(element => {
+        console.log("time block: " + element.id);
+        const compareTime = parseInt((element.id)[0]+(element.id)[1]);
+        console.log("compareTime: "+compareTime);
+        if(compareTime<timeNow){
+            element.classList.add("past");
+            element.classList.remove("present");
+            element.classList.remove("future");
         }
+        else if(compareTime==timeNow){
+            element.classList.add("present");
+            element.classList.remove("past");
+            element.classList.remove("future");
+        }
+        else{
+            element.classList.add("future");
+            element.classList.remove("past");
+            element.classList.remove("present");
+        }
+
+
     })
 }
 setTimes();
+//setInterval("window.location.reload()", 60000);
