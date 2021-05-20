@@ -18,6 +18,21 @@ function setTimes(){
     const timeNow = moment().hour();
 
     timeArray.forEach(timeBlock => ()=>{
-        
+        const compareTime = parseInt((timeBlock.id)[0]+(timeBlock.id)[1]);
+        switch(true){
+            case (compareTime<timeNow):
+                timeBlock.addClass("past");
+                timeBlock.removeClass("present");
+                timeBlock.removeClass("future");
+            case (compareTime==timeNow):
+                timeBlock.addClass("present");
+                timeBlock.removeClass("past");
+                timeBlock.removeClass("future");
+            case (compareTime>timeNow):
+                timeBlock.addClass("future");
+                timeBlock.removeClass("past");
+                timeBlock.removeClass("present");
+        }
     })
 }
+setTimes();
