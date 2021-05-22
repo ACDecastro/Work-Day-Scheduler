@@ -21,6 +21,7 @@ function setTimes(){
         console.log("time block: " + element.id);
         const compareTime = parseInt((element.id)[0]+(element.id)[1]);
         console.log("compareTime: "+compareTime);
+
         if(compareTime<timeNow){
             element.classList.add("past");
             element.classList.remove("present");
@@ -36,9 +37,9 @@ function setTimes(){
             element.classList.remove("past");
             element.classList.remove("present");
         }
-
-
     })
 }
+
 setTimes();
-//setInterval("window.location.reload()", 60000);
+setInterval("window.location.reload()", 60000);
+
