@@ -43,3 +43,19 @@ function setTimes(){
 setTimes();
 setInterval("window.location.reload()", 60000);
 
+$(".saveBtn").on("click", function (event) {
+    event.preventDefault();
+    var task = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
+    localStorage.setItem(time, task); 
+});
+
+for (let i = 900; i <= 1700 ; i = i+100) {
+    let taskID = i.toString();
+    if(i==900){
+        taskID = "0900";
+    }
+    let taskValue = localStorage.getItem(taskID);
+    let input = $("#" + taskID).find("textarea")
+    input.val(taskValue);
+}
