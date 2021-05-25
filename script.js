@@ -16,11 +16,8 @@ const timeArray = [hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16
 
 function setTimes(){
     const timeNow = moment().hour();
-    console.log("timeNow: "+timeNow);
     timeArray.forEach(element => {
-        console.log("time block: " + element.id);
         const compareTime = parseInt((element.id)[0]+(element.id)[1]);
-        console.log("compareTime: "+compareTime);
 
         if(compareTime<timeNow){
             element.classList.add("past");
